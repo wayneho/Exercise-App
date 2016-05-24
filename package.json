@@ -1,0 +1,37 @@
+{
+  "name": "Exercise-App",
+  "version": "0.0.0",
+  "description": "Selects relevant exercises for each muscle group",
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js \"test/**/*@(.js|.jsx)\"",
+    "test:watch": "npm run test -- --watch",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wayneho/Exercise-App.git"
+  },
+  "author": "Wayne Ho",
+  "license": "ISC",
+  "dependencies": {
+    "immutable": "^3.8.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.2",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.0.15",
+    "chai": "^3.5.0",
+    "chai-immutable": "^1.5.4",
+    "jsdom": "^9.1.0",
+    "mocha": "^2.4.5",
+    "react-hot-loader": "^1.3.0",
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
