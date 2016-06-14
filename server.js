@@ -39,14 +39,12 @@ function handleRender(req, res){
     let initialState = { muscleGroups }
     const store = createStore(reducer, initialState)
 
-    console.log("HELLO")
     const html = renderToString(
       <Provider store={store}>
-        <App />
+        <App radiumConfig={{userAgent: req.headers['user-agent']}} />
       </Provider>
     )
 
-    console.log("HELLO???")
     const finalState = store.getState()
 
     res.send(renderFullPage(html,finalState))

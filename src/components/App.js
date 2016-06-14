@@ -1,20 +1,25 @@
 import React from 'react'
+import Radium from 'radium'
 import FrontViewContainer from '../containers/FrontViewContainer'
 import VisibleMuscleContainer from '../containers/VisibleMuscleContainer'
+import FilterExercises from './FilterExercises'
+
+var styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'nowrap'
+  }
+}
 
 const App = () => (
-  <div>
+  <div style={[styles.container]}>
     <FrontViewContainer />
-    <VisibleMuscleContainer />
+    <div>
+      <VisibleMuscleContainer />
+      <FilterExercises />
+    </div>
   </div>
 )
 
-export default App
-
-    
-
-/*
-    <FrontViewContainer />
-    <VisibleMuscleContainer />
-
-*/
+export default Radium(App)
