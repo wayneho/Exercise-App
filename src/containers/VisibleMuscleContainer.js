@@ -1,17 +1,9 @@
 import { connect } from 'react-redux'
 import VisibleMuscle from '../components/VisibleMuscle'
 
-/*
-const getMuscleGroup = (muscleGroups, targetMuscle) => {
-  return muscleGroups.find(muscle => {
-    return targetMuscle === muscle.name
-  })
-}
-*/
-
 const getMuscleGroup = (muscleGroups, targetMuscle, equipmentFilter) => {
   let muscle
-  
+
   if(targetMuscle === 'none') return
 
   muscle = Object.assign({},muscleGroups.find(muscle => {
