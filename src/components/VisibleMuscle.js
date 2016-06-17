@@ -1,21 +1,46 @@
 import React, { PropTypes } from 'react'
+import Radium from 'radium'
 
-const VisibleMuscle = ({ muscle }) => {
-  if(muscle){
-    return (
-      <div>
-        <h1>{muscle.name}</h1>
-         <ul>
-          {muscle.exercises.map(exercise => {
-            return <li key={exercise.name}>{exercise.name}</li>
-          })}
-         </ul>
-      </div>
-    )
-  }else{
-    return <h1>Select a muscle group</h1>
+const styles = {
+  flexContainer: {
+    margin: '0',
+    padding: '0',
+    listStyle: 'none',
+    display: 'flex',
+    flexFlow: 'row wrap',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-end'
+  },
+  flexItem: {
+    padding: '10px',
+    width: '30%',
+    color: 'white',
+    background: 'tomato',
+    textAlign: 'center'
+  },
+  thumbnail: {
+    width: '100%'
   }
 }
+
+const VisibleMuscle = ({ muscle }) => (
+  muscle?
+      <div>
+         <ul style={[styles.flexContainer]}>
+          {muscle.exercises.map(exercise => {
+            const thumbnail = 'http://img.youtube.com/vi/'+exercise.videoID+'/mqdefault.jpg'
+            const videoLink = 'https://www.youtube.com/watch?v='+exercise.videoID
+            return <li style={[styles.flexItem]} key={exercise.name}>
+                      <h5>{exercise.name}</h5>
+                      <a href={videoLink}>
+                        <img style={[styles.thumbnail]} alt={exercise.name} src={thumbnail} />
+                      </a>
+                    </li>
+          })}
+         </ul>
+      </div>:
+      <div></div>
+)
 
 VisibleMuscle.propTypes = {
   muscle: PropTypes.shape({
@@ -28,4 +53,4 @@ VisibleMuscle.propTypes = {
   })
 }
 
-export default VisibleMuscle
+export default Radium(VisibleMuscle)

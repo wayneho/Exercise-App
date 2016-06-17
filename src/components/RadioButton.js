@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
 
 const RadioButton = ({ active, children, onClick }) => (
-  <div>
-    <label htmlFor={children}>{children}</label>
+  <span>
     <input type="radio" id={children} checked={active} onChange={()=>{onClick()}}/>
-  </div>
+    <label htmlFor={children}>{children}</label>
+  </span>
 )
 
 RadioButton.propTypes = {

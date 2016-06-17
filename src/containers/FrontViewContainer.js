@@ -2,6 +2,12 @@ import { connect } from 'react-redux'
 import { setMuscleGroup } from '../actions'
 import FrontView from '../components/FrontView'
 
+const mapStateToProps = (state) => {
+  return {
+    active: state.showMuscleGroup
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     onClick: (muscle) => {
@@ -11,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const FrontViewContainer = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(FrontView)
 

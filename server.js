@@ -59,8 +59,8 @@ function renderFullPage(html, initialState){
       <head>
         <title>Exercise App</title>
       </head>
-      <body>
-        <div id="root">${html}</div>
+      <body style="width: 100%">
+        <div id="root" style="max-width: 1200px; margin: 0 auto">${html}</div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
         </script>
