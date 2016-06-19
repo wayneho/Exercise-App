@@ -50,7 +50,7 @@ var styles = {
   }
 }
 
-const FrontView = ({ onClick, activeMuscle, diagramView }) => (
+const DiagramView = ({ onClick, activeMuscle, diagramView }) => (
   <svg viewBox="0 0 410 800" style={[styles.container]}>
     {diagramView === 'front' ?
       <g id="front-view">
@@ -612,4 +612,4 @@ const FrontView = ({ onClick, activeMuscle, diagramView }) => (
 )
 
 
-export default Radium(FrontView)
+export default Radium(DiagramView)

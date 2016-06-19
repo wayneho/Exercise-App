@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { setMuscleGroup } from '../actions'
-import FrontView from '../components/FrontView'
+import DiagramView from '../components/DiagramView'
 
 const mapStateToProps = (state) => {
   return {
@@ -17,9 +17,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const FrontViewContainer = connect(
+const DiagramViewContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(FrontView)
+)(DiagramView)
 
-export default FrontViewContainer
+export default DiagramViewContainer

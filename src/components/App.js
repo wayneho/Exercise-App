@@ -1,6 +1,6 @@
 import React from 'react'
 import Radium from 'radium'
-import FrontViewContainer from '../containers/FrontViewContainer'
+import DiagramViewContainer from '../containers/DiagramViewContainer'
 import VisibleMuscleContainer from '../containers/VisibleMuscleContainer'
 import FilterExercises from './FilterExercises'
 import Header from '../containers/HeaderContainer'
@@ -23,7 +23,7 @@ var styles = {
 const App = () => (
   <div style={[styles.container]}>
     <div style={[styles.item, styles.center]}>
-      <FrontViewContainer />
+      <DiagramViewContainer />
       <ChangeDiagram />
     </div>
     <div style={[styles.item]}>
