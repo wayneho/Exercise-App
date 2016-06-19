@@ -5,6 +5,7 @@ import config from './webpack.config'
 import Express from 'express'
 import React from 'react'
 
+import {StyleRoot} from 'radium';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { renderToString } from 'react-dom/server'
@@ -40,9 +41,11 @@ function handleRender(req, res){
     const store = createStore(reducer, initialState)
 
     const html = renderToString(
-      <Provider store={store}>
-        <App radiumConfig={{userAgent: req.headers['user-agent']}} />
-      </Provider>
+      <StyleRoot>
+        <Provider store={store}>
+          <App radiumConfig={{userAgent: req.headers['user-agent']}} />
+        </Provider>
+      </StyleRoot>
     )
 
     const finalState = store.getState()

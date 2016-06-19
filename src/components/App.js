@@ -4,6 +4,7 @@ import FrontViewContainer from '../containers/FrontViewContainer'
 import VisibleMuscleContainer from '../containers/VisibleMuscleContainer'
 import FilterExercises from './FilterExercises'
 import Header from '../containers/HeaderContainer'
+import ChangeDiagram from './ChangeDiagram'
 
 var styles = {
   container: {
@@ -23,6 +24,7 @@ const App = () => (
   <div style={[styles.container]}>
     <div style={[styles.item, styles.center]}>
       <FrontViewContainer />
+      <ChangeDiagram />
     </div>
     <div style={[styles.item]}>
       <Header />

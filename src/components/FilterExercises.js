@@ -1,13 +1,13 @@
 import React from 'react'
-import RadioButtonContainer from '../containers/RadioButtonContainer'
+import RadioButtonFilterExercises from '../containers/RadioButtonFilterExercises'
 
 const FilterExercises = () => (
   <div>
     <h4>Filter By:</h4>
-    <RadioButtonContainer filter="all">All </RadioButtonContainer>
-    <RadioButtonContainer filter="barbell">Barbell </RadioButtonContainer>
-    <RadioButtonContainer filter="dumbbell">Dumbbell </RadioButtonContainer>
-    <RadioButtonContainer filter="machine">Machine </RadioButtonContainer>
+    <RadioButtonFilterExercises filter="all">All </RadioButtonFilterExercises>
+    <RadioButtonFilterExercises filter="barbell">Barbell </RadioButtonFilterExercises>
+    <RadioButtonFilterExercises filter="dumbbell">Dumbbell </RadioButtonFilterExercises>
+    <RadioButtonFilterExercises filter="machine">Machine </RadioButtonFilterExercises>
   </div>
 )
 

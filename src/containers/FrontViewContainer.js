@@ -4,7 +4,8 @@ import FrontView from '../components/FrontView'
 
 const mapStateToProps = (state) => {
   return {
-    active: state.showMuscleGroup
+    activeMuscle: state.showMuscleGroup,
+    diagramView: state.diagramView
   }
 }
 

@@ -1,24 +1,25 @@
 import { connect } from 'react-redux'
-import { setEquipmentFilter } from '../actions'
+import { toggleDiagramView, setMuscleGroup } from '../actions'
 import RadioButton from '../components/RadioButton'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    active: state.equipmentFilter === ownProps.filter
+    active: state.diagramView === ownProps.filter
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: () => {
-      dispatch(setEquipmentFilter(ownProps.filter))
+      dispatch(toggleDiagramView(ownProps.filter))
+      dispatch(setMuscleGroup("none"))
     }
   }
 }
 
-const RadioButtonContainer = connect(
+const RadioButtonChangeDiagram = connect(
   mapStateToProps,
   mapDispatchToProps
 )(RadioButton)
 
-export default RadioButtonContainer
+export default RadioButtonChangeDiagram

@@ -32,7 +32,7 @@ const VisibleMuscle = ({ muscle }) => (
             const videoLink = 'https://www.youtube.com/watch?v='+exercise.videoID
             return <li style={[styles.flexItem]} key={exercise.name}>
                       <h5>{exercise.name}</h5>
-                      <a href={videoLink}>
+                      <a href={videoLink} target="_blank">
                         <img style={[styles.thumbnail]} alt={exercise.name} src={thumbnail} />
                       </a>
                     </li>

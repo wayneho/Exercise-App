@@ -1,4 +1,5 @@
 import React from 'react'
+import {StyleRoot} from 'radium'
 import { render } from 'react-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -12,9 +13,11 @@ const store = createStore(reducer, initialState,
 )
 
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>, 
+  <StyleRoot>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </StyleRoot>, 
   document.getElementById('root')
 )
 
