@@ -6,7 +6,7 @@ import Express from 'express'
 import React from 'react'
 
 import { StyleRoot } from 'radium';
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { renderToString } from 'react-dom/server'
 
@@ -16,11 +16,6 @@ import App from './src/components/App'
 import getMuscles from './src/api/muscleGroups'
 import { BACK_MUSCLES } from './src/constants/MuscleGroups'
 
-/*
-var webpack = require('webpack')
-var webpackDevMiddleware = require('webpack-dev-middleware')
-var webpackHotMiddleware = require('webpack-hot-middleware')
-var config = require('./webpack.config')*/
 
 var app = new Express()
 var port = 8080
@@ -28,12 +23,6 @@ var port = 8080
 var compiler = webpack(config)
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
 app.use(webpackHotMiddleware(compiler))
-
-/*
-app.get("/", function(req, res) {
-  res.sendFile(__dirname + '/index.html')
-})*/
-
 
 
 app.use(handleRender)
@@ -51,7 +40,11 @@ function handleRender(req, res){
 
   getMuscles( muscleGroups => {
 
-    const [_, muscle] = req.originalUrl.split('/')
+    let [_, muscle] = req.originalUrl.split('/')
+
+    // fix muscles with spaces in their names
+    muscle = muscle.split('%20').join(' ')
+
     const back = BACK_MUSCLES.some(backMuscle=>{
       return backMuscle === muscle
     })
@@ -90,7 +83,7 @@ function renderFullPage(html, initialState){
         <title>Exercise App</title>
       </head>
       <body style="width: 100%; background-color: #171717; color: #FFF" >
-        <div id="root" style="max-width: 1200px; margin: 0 auto">${html}</div>
+        <div id="root" style="max-width: 1200px; margin: 0 auto;">${html}</div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
         </script>

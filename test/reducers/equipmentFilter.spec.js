@@ -2,11 +2,11 @@ import expect from 'expect'
 import reducer from '../../src/reducers/equipmentFilter'
 import { SET_EQUIPMENT_FILTER } from '../../src/constants/ActionTypes'
 
-describe('equipment filter reducer', () => {
+describe('equipmentFilter reducer', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {})
-    ).toEqual('SHOW_ALL')
+    ).toEqual('all')
   })
 
   it('should set the proper equipment filter' , () => {
@@ -18,7 +18,7 @@ describe('equipment filter reducer', () => {
     ).toEqual('barbell')
 
     expect(
-      reducer("SHOW_ALL", {
+      reducer("all", {
         type: SET_EQUIPMENT_FILTER,
         filter: 'machine'
       })

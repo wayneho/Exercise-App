@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import Radium from 'radium'
 
 // front
@@ -611,5 +611,10 @@ const DiagramView = ({ onClick, activeMuscle, diagramView }) => (
   </svg>
 )
 
+DiagramView.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  activeMuscle: PropTypes.string.isRequired,
+  diagramView: PropTypes.string.isRequired
+}
 
 export default Radium(DiagramView)

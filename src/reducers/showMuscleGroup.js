@@ -9,6 +9,10 @@ const showMuscleGroup = (state = '/', action) => {
       const pathname = action.payload.pathname
       let muscle = pathname.split('/')
       muscle = muscle[muscle.length-1]
+
+      // fix muscles with spaces in their names
+      muscle = muscle.split('%20').join(' ')
+
       muscle===''?muscle='/':muscle
       return muscle
     default: 

@@ -13,7 +13,7 @@ const styles = {
   },
   flexItem: {
     padding: '10px',
-    width: '30%',
+    maxWidth: '40%',
     color: '#fff',
     textAlign: 'center'
   },
@@ -46,9 +46,10 @@ VisibleMuscle.propTypes = {
     _id: PropTypes.string.isRequired,
     exercises: PropTypes.arrayOf(PropTypes.shape({
       equipment: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
+      name: PropTypes.string.isRequired,
+      videoID: PropTypes.string.isRequired
     }).isRequired).isRequired,
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
   })
 }
 
