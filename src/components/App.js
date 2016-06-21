@@ -13,7 +13,8 @@ var styles = {
     justifyContent: 'center'
   },
   item: {
-    width: '50%'
+    width: '50%',
+    'transition': 'all 1s ease'
   },
   center: {
     textAlign: 'center'

@@ -40,7 +40,7 @@ var styles = {
     ':hover': {
       fill: '#C63939'
     },
-    'transition': 'all 0.2s ease'
+    transition: 'all 0.2s ease'
   },
   activeMuscle: {
     fill: '#C63939',

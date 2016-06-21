@@ -14,8 +14,7 @@ const styles = {
   flexItem: {
     padding: '10px',
     width: '30%',
-    color: 'white',
-    background: 'tomato',
+    color: '#fff',
     textAlign: 'center'
   },
   thumbnail: {

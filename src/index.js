@@ -1,15 +1,27 @@
 import React from 'react'
-import {StyleRoot} from 'radium'
+import { StyleRoot } from 'radium'
 import { render } from 'react-dom'
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
+import { browserHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
+
+
+
 import App from './components/App'
-import reducer from './reducers/index'
+import reducers from './reducers/index'
 
 const initialState = window.__INITIAL_STATE__
 
-const store = createStore(reducer, initialState,
+const store = createStore(
+  reducers, 
+  initialState,
   window.devToolsExtension && window.devToolsExtension()
+)
+
+syncHistoryWithStore(
+  browserHistory,
+  store
 )
 
 render(

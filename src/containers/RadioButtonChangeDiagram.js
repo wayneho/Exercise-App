@@ -12,7 +12,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: () => {
       dispatch(toggleDiagramView(ownProps.filter))
-      dispatch(setMuscleGroup("none"))
+      dispatch(setMuscleGroup("/"))
     }
   }
 }

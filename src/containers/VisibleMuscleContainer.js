@@ -4,11 +4,14 @@ import VisibleMuscle from '../components/VisibleMuscle'
 const getMuscleGroup = (muscleGroups, targetMuscle, equipmentFilter) => {
   let muscle
 
-  if(targetMuscle === 'none') return
+  //if(targetMuscle === '/') return
 
   muscle = Object.assign({},muscleGroups.find(muscle => {
     return targetMuscle === muscle.name
   }))
+
+  // check if muscle exists in state 
+  if(Object.keys(muscle).length == 0) return
 
   if(equipmentFilter !== 'all'){
     muscle.exercises = muscle.exercises.filter(exercise => {

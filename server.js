@@ -5,13 +5,16 @@ import config from './webpack.config'
 import Express from 'express'
 import React from 'react'
 
-import {StyleRoot} from 'radium';
-import { createStore } from 'redux'
+import { StyleRoot } from 'radium';
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { renderToString } from 'react-dom/server'
-import reducer from './src/reducers/index'
+
+
+import reducers from './src/reducers/index'
 import App from './src/components/App'
 import getMuscles from './src/api/muscleGroups'
+import { BACK_MUSCLES } from './src/constants/MuscleGroups'
 
 /*
 var webpack = require('webpack')
@@ -32,13 +35,37 @@ app.get("/", function(req, res) {
 })*/
 
 
+
 app.use(handleRender)
 
 function handleRender(req, res){
 
+  // control for favicon
+  if(req.url === '/favicon.ico'){
+    res.writeHead(200, {'Content-Type': 'image/x-icon'} )
+    res.end()
+    //console.log('favicon requested')
+    return
+  }
+
+
   getMuscles( muscleGroups => {
-    let initialState = { muscleGroups }
-    const store = createStore(reducer, initialState)
+
+    const [_, muscle] = req.originalUrl.split('/')
+    const back = BACK_MUSCLES.some(backMuscle=>{
+      return backMuscle === muscle
+    })
+
+    let initialState = { 
+      muscleGroups, 
+      showMuscleGroup: muscle?muscle:'/',
+      diagramView: back?'back':'front'
+    }
+
+    const store = createStore(
+      reducers, 
+      initialState
+    )
 
     const html = renderToString(
       <StyleRoot>
@@ -62,7 +89,7 @@ function renderFullPage(html, initialState){
       <head>
         <title>Exercise App</title>
       </head>
-      <body style="width: 100%">
+      <body style="width: 100%; background-color: #171717; color: #FFF" >
         <div id="root" style="max-width: 1200px; margin: 0 auto">${html}</div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
