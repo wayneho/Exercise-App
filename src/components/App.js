@@ -1,5 +1,6 @@
 import React from 'react'
 import Radium from 'radium'
+
 import DiagramViewContainer from '../containers/DiagramViewContainer'
 import VisibleMuscleContainer from '../containers/VisibleMuscleContainer'
 import FilterExercises from './FilterExercises'
@@ -13,26 +14,28 @@ var styles = {
     justifyContent: 'center'
   },
   item: {
-    width: '50%',
-    'transition': 'all 1s ease'
+    width: '50%'
   },
   center: {
     textAlign: 'center'
   }
 }
 
-const App = () => (
-  <div style={[styles.container]}>
-    <div style={[styles.item, styles.center]}>
-      <DiagramViewContainer />
-      <ChangeDiagram />
+const App = () => {
+
+  return(
+    <div style={[styles.container]}>
+      <div style={[styles.item, styles.center]}>
+        <DiagramViewContainer />
+        <ChangeDiagram />
+      </div>
+      <div style={[styles.item]}>
+        <Header />
+        <FilterExercises />
+        <VisibleMuscleContainer />
+      </div>
     </div>
-    <div style={[styles.item]}>
-      <Header />
-      <FilterExercises />
-      <VisibleMuscleContainer />
-    </div>
-  </div>
-)
+  )
+}
 
 export default Radium(App)

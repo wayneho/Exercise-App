@@ -1,16 +1,8 @@
 import React, { PropTypes } from 'react'
-import Radium from 'radium'
+import Radium, { Style } from 'radium'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 const styles = {
-  flexContainer: {
-    margin: '0',
-    padding: '0',
-    listStyle: 'none',
-    display: 'flex',
-    flexFlow: 'row wrap',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-end'
-  },
   flexItem: {
     padding: '10px',
     maxWidth: '40%',
@@ -22,11 +14,38 @@ const styles = {
   }
 }
 
+
 const VisibleMuscle = ({ muscle }) => (
   muscle?
       <div>
-         <ul style={[styles.flexContainer]}>
-          {muscle.exercises.map(exercise => {
+        <Style rules={{
+          '.example-appear': {
+            opacity: '0.01'
+          },
+          '.example-appear.example-appear-active': {
+            opacity: '1',
+            transition: 'opacity .5s ease-in'
+          },
+          '.example-enter': {
+            opacity: '0.01',
+          },
+          '.example-enter.example-enter-active': {
+            opacity: '1',
+            transition: 'opacity 500ms ease-in'
+          },
+          '.flex-container': {
+            margin: '0px',
+            padding: '0px',
+            listStyle: 'none',
+            display: 'flex',
+            flexFlow: 'row wrap',
+            justifyContent: 'flex-start',
+            alignItems: 'flex-end'
+          }
+        }}/>
+        <ReactCSSTransitionGroup component="ul" className="flex-container" transitionAppear={true} transitionAppearTimeout={500} transitionName="example" transitionEnterTimeout={500} transitionLeave={false}>
+          {
+            muscle.exercises.map(exercise => {
             const thumbnail = 'http://img.youtube.com/vi/'+exercise.videoID+'/mqdefault.jpg'
             const videoLink = 'https://www.youtube.com/watch?v='+exercise.videoID
             return <li style={[styles.flexItem]} key={exercise.name}>
@@ -35,11 +54,13 @@ const VisibleMuscle = ({ muscle }) => (
                         <img style={[styles.thumbnail]} alt={exercise.name} src={thumbnail} />
                       </a>
                     </li>
-          })}
-         </ul>
+            })
+          }
+        </ReactCSSTransitionGroup>
       </div>:
       <div></div>
 )
+
 
 VisibleMuscle.propTypes = {
   muscle: PropTypes.shape({
@@ -54,3 +75,4 @@ VisibleMuscle.propTypes = {
 }
 
 export default Radium(VisibleMuscle)
+
