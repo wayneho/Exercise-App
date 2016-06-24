@@ -5,7 +5,7 @@ import config from './webpack.config'
 import Express from 'express'
 import React from 'react'
 
-import { StyleRoot } from 'radium';
+import { StyleRoot } from 'radium'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { renderToString } from 'react-dom/server'
@@ -18,7 +18,8 @@ import { BACK_MUSCLES } from './src/constants/MuscleGroups'
 
 
 var app = new Express()
-var port = 8080
+var port = process.env.PORT || 8080
+
 
 var compiler = webpack(config)
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
