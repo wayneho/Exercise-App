@@ -2,7 +2,7 @@ require('es6-promise').polyfill()
 require('isomorphic-fetch')
 
 export default function getMuscles(cb){
-  fetch('https://secret-falls-22349.herokuapp.com/muscles')
+  fetch('https://exerciseapi.herokuapp.com/muscles')
     .then(function(res){
       if(res.status >= 400){
         throw new Error("Bad response from server")
