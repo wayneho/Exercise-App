@@ -7,7 +7,7 @@ Users can select a muscle group on the human body diagram and the app will rende
 - Hot module reloading
 - Redux DevTools
 - React-router-redux for URL management
-- API:
+- API Server: https://exerciseapi.herokuapp.com/
 
 | URL                             | HTTP Verb     | Functionality                  |
 | -------------                   |:-------------:| -----:                         |
