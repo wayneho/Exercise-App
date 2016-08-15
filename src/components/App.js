@@ -3,7 +3,7 @@ import Radium from 'radium'
 
 import DiagramViewContainer from '../containers/DiagramViewContainer'
 import VisibleMuscleContainer from '../containers/VisibleMuscleContainer'
-import FilterExercises from './FilterExercises'
+import FilterExercisesContainer from '../containers/FilterExercisesContainer'
 import Header from '../containers/HeaderContainer'
 import ChangeDiagram from './ChangeDiagram'
 
@@ -13,11 +13,15 @@ var styles = {
     flexFlow: 'row nowrap',
     justifyContent: 'center'
   },
-  item: {
-    width: '50%'
+  item1: {
+    width: '40%'
   },
   center: {
     textAlign: 'center'
+  },
+  item2: {
+    width: '60%',
+    marginLeft: '5%'
   }
 }
 
@@ -25,13 +29,13 @@ const App = () => {
 
   return(
     <div style={[styles.container]}>
-      <div style={[styles.item, styles.center]}>
+      <div style={[styles.item1, styles.center]}>
         <DiagramViewContainer />
         <ChangeDiagram />
       </div>
-      <div style={[styles.item]}>
+      <div style={[styles.item2]}>
         <Header />
-        <FilterExercises />
+        <FilterExercisesContainer />
         <VisibleMuscleContainer />
       </div>
     </div>

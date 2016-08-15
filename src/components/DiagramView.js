@@ -23,6 +23,7 @@ const tris = "Triceps"
 var styles = {
   container: {
     width: "100%",
+    paddingTop: '10px',
     height: '500px',
     '@media (min-width: 500px)': {
       height: '700px'
@@ -51,7 +52,7 @@ var styles = {
 }
 
 const DiagramView = ({ onClick, activeMuscle, diagramView }) => (
-  <svg viewBox="0 0 410 800" style={[styles.container]}>
+  <svg viewBox="0 0 410 800" style={[styles.container]} >
     {diagramView === 'front' ?
       <g id="front-view">
         <g id={delts} onClick={()=>onClick(delts)} style={(activeMuscle===delts)?[styles.activeMuscle]:[styles.targetable]} key={delts}>

@@ -21,9 +21,11 @@ var app = new Express()
 var port = process.env.PORT || 8080
 
 
-var compiler = webpack(config)
-app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
-app.use(webpackHotMiddleware(compiler))
+if(process.env.NODE_ENV !== 'production'){
+  var compiler = webpack(config)
+  app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
+  app.use(webpackHotMiddleware(compiler))
+}
 
 
 app.use(handleRender)
@@ -81,14 +83,16 @@ function renderFullPage(html, initialState){
     <!doctype html>
     <html>
       <head>
+        <meta charset="UTF-8">
         <title>Exercise App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
       </head>
-      <body style="width: 100%; background-color: #171717; color: #FFF" >
+      <body style="width: 100%; overflow: hidden; background-color: #171717; color: #FFF" >
         <div id="root" style="max-width: 1200px; margin: 0 auto;">${html}</div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
         </script>
-        <script src="/static/bundle.js"></script>
+        <script src="bundle.js"></script>
       </body>
     </html>
     `

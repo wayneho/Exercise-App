@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import React from 'react'
 import { StyleRoot } from 'radium'
 import { render } from 'react-dom'

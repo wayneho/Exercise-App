@@ -6,7 +6,7 @@ const styles = {
   flexItem: {
     padding: '10px',
     maxWidth: '40%',
-    color: '#fff',
+    color: '#cc7a6f',
     textAlign: 'center'
   },
   thumbnail: {
@@ -17,7 +17,7 @@ const styles = {
 
 const VisibleMuscle = ({ muscle }) => (
   muscle?
-      <div>
+      <div style={[styles.center]}>
         <Style rules={{
           '.example-appear': {
             opacity: '0.01'
@@ -39,8 +39,9 @@ const VisibleMuscle = ({ muscle }) => (
             listStyle: 'none',
             display: 'flex',
             flexFlow: 'row wrap',
-            justifyContent: 'flex-start',
-            alignItems: 'flex-end'
+            alignItems: 'center',
+            textAlign: 'center',
+            justifyContent: 'flex-start'
           }
         }}/>
         <ReactCSSTransitionGroup component="ul" className="flex-container" transitionAppear={true} transitionAppearTimeout={500} transitionName="example" transitionEnterTimeout={500} transitionLeave={false}>
