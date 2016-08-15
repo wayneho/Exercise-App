@@ -27,7 +27,7 @@ if(process.env.NODE_ENV !== 'production'){
   app.use(webpackHotMiddleware(compiler))
 }
 
-
+app.use(Express.static(__dirname + '/dist'))
 app.use(handleRender)
 
 function handleRender(req, res){
@@ -92,7 +92,7 @@ function renderFullPage(html, initialState){
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
         </script>
-        <script src="bundle.js"></script>
+        <script src="/bundle.js"></script>
       </body>
     </html>
     `
